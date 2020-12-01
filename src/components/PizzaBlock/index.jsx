@@ -5,6 +5,7 @@ import classNames from 'classnames';
 const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
+
   const [activeType, setActiveType] = useState(types[0]);
   const [activeSize, setActiveSize] = useState(sizes[0]);
 

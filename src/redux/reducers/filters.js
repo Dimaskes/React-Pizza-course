@@ -1,6 +1,6 @@
 const initialState = {
   sortBy: 'popular',
-  category: 0,
+  category: null,
 };
 
 const filters = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const filters = (state = initialState, action) => {
       sortBy: action.payload,
     };
   }
-  if (action.type === 'SET_CATEGIRY') {
+  if (action.type === 'SET_CATEGORY') {
     return {
       ...state,
       category: action.payload,
