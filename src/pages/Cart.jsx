@@ -155,7 +155,9 @@ const Cart = () => {
                     />
                   </svg>
 
-                  <span>Вернуться назад</span>
+                  <Link to='/'>
+                    <span>Вернуться назад</span>
+                  </Link>
                 </a>
                 <div className='button pay-btn'>
                   <span>Оплатить сейчас</span>
