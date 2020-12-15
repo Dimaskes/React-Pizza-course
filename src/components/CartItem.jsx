@@ -1,9 +1,15 @@
 import React from 'react';
 import Button from './Button';
 
-const CartItem = ({ id, name, type, size, totalPrice, totalCount, onRemove }) => {
+const CartItem = ({ id, name, type, size, totalPrice, totalCount, onRemove, onMinus, onPlus }) => {
   const handleRemoveClick = () => {
     onRemove(id);
+  };
+  const handleMinusItem = () => {
+    onMinus(id);
+  };
+  const handlePlusItem = () => {
+    onPlus(id);
   };
   return (
     <div className='cart__item'>
@@ -21,7 +27,7 @@ const CartItem = ({ id, name, type, size, totalPrice, totalCount, onRemove }) =>
         </p>
       </div>
       <div className='cart__item-count'>
-        <div className='button button--outline button--circle cart__item-count-minus'>
+        <Button onClick={handleMinusItem} className='button--circle cart__item-count-minus' outline>
           <svg
             width='10'
             height='10'
@@ -37,9 +43,9 @@ const CartItem = ({ id, name, type, size, totalPrice, totalCount, onRemove }) =>
               fill='#EB5A1E'
             />
           </svg>
-        </div>
+        </Button>
         <b>{totalCount}</b>
-        <div className='button button--outline button--circle cart__item-count-plus'>
+        <Button onClick={handlePlusItem} className='button--circle cart__item-count-plus' outline>
           <svg
             width='10'
             height='10'
@@ -55,7 +61,7 @@ const CartItem = ({ id, name, type, size, totalPrice, totalCount, onRemove }) =>
               fill='#EB5A1E'
             />
           </svg>
-        </div>
+        </Button>
       </div>
       <div className='cart__item-price'>
         <b>{totalPrice} ₽</b>

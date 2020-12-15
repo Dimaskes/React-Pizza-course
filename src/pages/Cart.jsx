@@ -1,7 +1,7 @@
 import React from 'react';
 import { CartItem } from '../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart, removeCartItem } from '../redux/actions/cart';
+import { clearCart, removeCartItem, plusCartItem, minusCartItem } from '../redux/actions/cart';
 import { Link } from 'react-router-dom';
 
 import cartEmptyImg from '../assets/img/empty-cart.png';
@@ -25,6 +25,13 @@ const Cart = () => {
     if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart());
     }
+  };
+
+  const onPlusItem = (id) => {
+    dispatch(plusCartItem(id));
+  };
+  const onMinusItem = (id) => {
+    dispatch(minusCartItem(id));
   };
 
   return (
@@ -115,6 +122,8 @@ const Cart = () => {
                   totalCount={items[obj.id].items.length}
                   onRemove={onRemoveCartItem}
                   key={`${obj.name}_${index}`}
+                  onMinus={onMinusItem}
+                  onPlus={onPlusItem}
                 />
               ))}
             </div>
@@ -158,9 +167,7 @@ const Cart = () => {
           <div className='content'>
             <div className='container container--cart'>
               <div className='cart cart--empty'>
-                <h2>
-                  Корзина пустая <icon>😕</icon>
-                </h2>
+                <h2>Корзина пустая</h2>
                 <p>
                   Вероятней всего, вы не заказывали ещё пиццу.
                   <br />
